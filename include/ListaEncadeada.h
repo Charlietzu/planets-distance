@@ -3,6 +3,8 @@
 
 #include "Planeta.h"
 #include "TipoCelula.h"
+#include <fstream>
+#include <iostream>
 
 class ListaEncadeada {
     public:
@@ -14,6 +16,8 @@ class ListaEncadeada {
         void InsereFinal(Planeta planeta);
         void LimpaLista();
         int GetTamanho();
+        void ProcessaEntrada(string nomeEntrada, int numeroLinhas);
+        void ProcessaLinha(string linha);
 
 
     private:

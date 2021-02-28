@@ -1,4 +1,7 @@
 #include "ListaEncadeada.h"
+#include <fstream>
+
+using namespace std;
 
 ListaEncadeada::ListaEncadeada(){
 	primeiro = new TipoCelula();
@@ -71,4 +74,20 @@ void ListaEncadeada::LimpaLista() {
 
 	ultimo = primeiro;
 	tamanho = 0;
+}
+
+void ListaEncadeada::ProcessaEntrada(string nomeEntrada, int numeroLinhas) {
+	int i = 0;
+	string linha;
+	ifstream arquivo;
+	arquivo.open(nomeEntrada, ios::in);
+	
+	while (getline(arquivo, linha) && i < 7) {
+		ProcessaLinha(linha);
+		i++;
+	}
+}
+
+void ListaEncadeada::ProcessaLinha(string linha) {
+	cout << linha << endl;
 }
