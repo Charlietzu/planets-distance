@@ -42,8 +42,12 @@ Planeta* ListaEncadeada::GetPlaneta(int pos) {
 }
 
 void ListaEncadeada::InsereInicio(Planeta *planeta){
-	TipoCelula* nova;
+	if(tamanho == 0){
+		primeiro = new TipoCelula();
+		ultimo = primeiro;
+	}
 
+	TipoCelula* nova;
 	nova = new TipoCelula();
 	nova->planeta = planeta;
 	nova->prox = primeiro->prox;
@@ -53,34 +57,6 @@ void ListaEncadeada::InsereInicio(Planeta *planeta){
 	if(nova->prox == NULL){
 		ultimo = nova;
 	}
-}
-
-void ListaEncadeada::InserePosicao(Planeta *planeta, int pos){
-	TipoCelula* p;
-	TipoCelula* nova;
-
-	p = Posiciona(pos, true);
-
-	nova = new TipoCelula();
-	nova->planeta = planeta;
-	nova->prox = p->prox;
-	p->prox = nova;
-	tamanho++;
-
-	if(nova->prox == NULL){
-		ultimo = nova;
-	}
-}
-
-void ListaEncadeada::InsereFinal(Planeta *planeta) {
-	TipoCelula* nova;
-
-	nova = new TipoCelula();
-	nova->planeta = planeta;
-	ultimo->prox = nova;
-	ultimo = nova;
-
-	tamanho++;
 }
 
 int ListaEncadeada::GetTamanho() {
@@ -130,12 +106,15 @@ void ListaEncadeada::ProcessaLinha(string linha, int pos) {
 		}
 	}
 	Planeta* planeta = new Planeta(nomePlaneta, stoi(distanciaStr));
-	InserePosicao(planeta, pos);
+	InsereInicio(planeta);
 }
 
 void ListaEncadeada::ImprimeLista(){
-	for(int i = 1; i < tamanho; i++){
-		Planeta* planeta = GetPlaneta(i);
-		planeta->ImprimePlaneta();
+	TipoCelula *p;
+
+	p = primeiro->prox;
+ 	while(p != NULL){
+		p->planeta->ImprimePlaneta();
+		p = p->prox;
 	}
 }
