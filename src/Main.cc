@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ListaEncadeada.h"
+#include "ListaArranjo.h"
 
 FILE *arquivo_distancias;
 
@@ -10,8 +10,9 @@ int main(int argc, char* argv[]) {
         string numeroLinhaStr = argv[2];
         int numeroLinhas = stoi(numeroLinhaStr);
 
-        ListaEncadeada* listaPlanetas = new ListaEncadeada();
+        ListaArranjo* listaPlanetas = new ListaArranjo();
         listaPlanetas->ProcessaEntrada(nomeEntrada, numeroLinhas);
+        listaPlanetas->InsertionSort();
         listaPlanetas->ImprimeLista();
     }
 
