@@ -11,13 +11,15 @@ class ListaEncadeada {
         ListaEncadeada();
         ~ListaEncadeada();
         
-        Planeta GetPlaneta(int pos);
-        void SetPlaneta(Planeta planeta, int pos);
-        void InsereFinal(Planeta planeta);
+        Planeta* GetPlaneta(int pos);
+        void InsereFinal(Planeta *planeta);
+        void InsereInicio(Planeta *planeta);
+        void InserePosicao(Planeta *planeta, int pos);
         void LimpaLista();
         int GetTamanho();
         void ProcessaEntrada(string nomeEntrada, int numeroLinhas);
-        void ProcessaLinha(string linha);
+        void ProcessaLinha(string linha, int pos);
+        void ImprimeLista();
 
 
     private:

@@ -8,7 +8,7 @@ class TipoCelula {
         TipoCelula();
 
     private:
-        Planeta planeta;
+        Planeta *planeta;
         TipoCelula *prox;
 
     friend class ListaEncadeada;

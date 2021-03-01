@@ -12,6 +12,7 @@ int main(int argc, char* argv[]) {
 
         ListaEncadeada* listaPlanetas = new ListaEncadeada();
         listaPlanetas->ProcessaEntrada(nomeEntrada, numeroLinhas);
+        listaPlanetas->ImprimeLista();
     }
 
     return 0;
