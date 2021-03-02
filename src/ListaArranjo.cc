@@ -113,55 +113,29 @@ void ListaArranjo::QuickSort(){
     Ordena(0, tamanhoPreenchido-1);
 }
 
-void ListaArranjo::MergeSort(int Esq, int Dir){
-    if(Esq < Dir){
-        int meio = (Esq + Dir)/2;
-        MergeSort(Esq, meio);
-        MergeSort(meio + 1, Dir);
-        Merge(Esq, meio, Dir);
-    }
-}
-
-void ListaArranjo::Merge(int Esq, int meio, int Dir){
-    int n1 = meio - Esq + 1;
-    int n2 = Dir - meio;
-
-    Planeta *Esquerda[200000];
-    Planeta *Direita[200000];
-
-    for(int i = 0; i < n1; i++){
-        Esquerda[i] = planetas[Esq + i];
-    }
-    
-    for(int j = 0; j < n2; j++){
-        Direita[j] = planetas[meio + 1 + j];
-    }
-
-    int i = 0, j = 0, k = Esq;
-
-    while (i < n1 && j < n2){
-        if(Esquerda[i] <= Direita[j]){
-            planetas[k] = Esquerda[i];
-        } else {
-            planetas[k] = Direita[j];
-            j++;
-        }
-        k++;
-    }
-
-    while(i < n1){
-        planetas[k] = Esquerda[i];
-        i++;
-        k++;
-    }
-
-    while(j < n2){
-        planetas[k] = Direita[j];
-        j++;
-        k++;
-    }
-}
-
 int ListaArranjo::GetTamanhoPreenchido(){
     return tamanhoPreenchido;
+}
+
+void ListaArranjo::SelectionSort(){
+    int i, j, menor;
+
+    for(i = 0; i < tamanhoPreenchido - 1; i++){
+       menor = i;
+
+       for(j = i + 1; j < tamanhoPreenchido; j++){
+           if(planetas[j]->GetDistanciaPlaneta() > planetas[menor]->GetDistanciaPlaneta()){
+               menor = j;
+           }
+       }
+       Troca(i, menor);
+    }
+}
+
+void ListaArranjo::Troca(int i, int menor){
+    Planeta *aux;
+
+    aux = planetas[i];
+    planetas[i] = planetas[menor];
+    planetas[menor] = aux;
 }

@@ -20,8 +20,8 @@ class ListaArranjo {
         void QuickSort();
         void Particao(int Esq, int Dir, int *i, int *j);
         void Ordena(int Esq, int Dir);
-        void MergeSort(int Esq, int Dir);
-        void Merge(int Esq, int meio,int Dir);
+        void SelectionSort();
+        void Troca(int i, int menor);
 
     private:
         int tamanhoPreenchido;

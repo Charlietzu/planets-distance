@@ -12,11 +12,14 @@ int main(int argc, char* argv[]) {
 
         ListaArranjo* listaPlanetas = new ListaArranjo();
         listaPlanetas->ProcessaEntrada(nomeEntrada, numeroLinhas);
-        int tamanhoLista = listaPlanetas->GetTamanhoPreenchido();
+
 
         //listaPlanetas->InsertionSort();
-        listaPlanetas->MergeSort(0, tamanhoLista - 1);
-        //listaPlanetas->QuickSort();
+
+        listaPlanetas->QuickSort();
+
+        //listaPlanetas->SelectionSort();
+
         listaPlanetas->ImprimeLista();
     }
 
