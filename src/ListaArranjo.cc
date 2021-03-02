@@ -17,7 +17,6 @@ void ListaArranjo::InsereInicio(Planeta *planeta){
     for(int i = tamanhoPreenchido; i>0; i--){
         planetas[i] = planetas[i-1];
     }
-
     planetas[0] = planeta;
 }
 
@@ -117,21 +116,6 @@ int ListaArranjo::GetTamanhoPreenchido(){
     return tamanhoPreenchido;
 }
 
-void ListaArranjo::SelectionSort(){
-    int i, j, menor;
-
-    for(i = 0; i < tamanhoPreenchido - 1; i++){
-       menor = i;
-
-       for(j = i + 1; j < tamanhoPreenchido; j++){
-           if(planetas[j]->GetDistanciaPlaneta() > planetas[menor]->GetDistanciaPlaneta()){
-               menor = j;
-           }
-       }
-       Troca(i, menor);
-    }
-}
-
 void ListaArranjo::Troca(int i, int menor){
     Planeta *aux;
 
@@ -139,3 +123,54 @@ void ListaArranjo::Troca(int i, int menor){
     planetas[i] = planetas[menor];
     planetas[menor] = aux;
 }
+
+void ListaArranjo::Merge(int e, int m, int d){
+    int numEsq = m - e + 1;
+    int numDir = d - m;
+ 
+    Planeta** esquerda = (Planeta**)malloc((numEsq) * sizeof(Planeta*));
+    Planeta** direita = (Planeta**)malloc((numDir) * sizeof(Planeta*));
+
+    for (int i = 0; i < numEsq; i++){
+        esquerda[i] = planetas[e + i];
+    }
+    for (int j = 0; j < numDir; j++){
+        direita[j] = planetas[m + 1 + j];
+    }
+ 
+    int i = 0, j = 0, k = e;
+ 
+    while (i < numEsq && j < numDir) {
+        if (esquerda[i]->GetDistanciaPlaneta() > direita[j]->GetDistanciaPlaneta()) {
+            planetas[k] = esquerda[i];
+            i++;
+        } else {
+            planetas[k] = direita[j];
+            j++;
+        }
+        k++;
+    }
+ 
+    while (i < numEsq) {
+        planetas[k] = esquerda[i];
+        i++;
+        k++;
+    }
+
+    while (j < numDir) {
+        planetas[k] = direita[j];
+        j++;
+        k++;
+    }
+}
+
+void ListaArranjo::MergeSort(int esq,int dir){
+    if(esq < dir){
+        int m = esq + (dir - esq)/2;
+        MergeSort(esq, m);
+        MergeSort(m + 1, dir);
+        Merge(esq, m, dir);
+    }
+
+}
+ 

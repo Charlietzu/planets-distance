@@ -16,9 +16,11 @@ int main(int argc, char* argv[]) {
 
         //listaPlanetas->InsertionSort();
 
-        listaPlanetas->QuickSort();
+        //listaPlanetas->QuickSort();
 
-        //listaPlanetas->SelectionSort();
+        //listaPlanetas->HeapSort();
+       
+        listaPlanetas->MergeSort(0, listaPlanetas->GetTamanhoPreenchido() - 1);
 
         listaPlanetas->ImprimeLista();
     }
