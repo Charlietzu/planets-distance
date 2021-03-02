@@ -10,7 +10,6 @@ class ListaArranjo {
         ListaArranjo();
         ~ListaArranjo();
         
-        Planeta* GetPlaneta(int pos);
         void InsereInicio(Planeta *planeta);
         void LimpaLista();
         int GetTamanhoPreenchido();

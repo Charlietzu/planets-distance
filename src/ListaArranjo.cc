@@ -148,4 +148,20 @@ void ListaArranjo::Merge(int Esq, int meio, int Dir){
         }
         k++;
     }
+
+    while(i < n1){
+        planetas[k] = Esquerda[i];
+        i++;
+        k++;
+    }
+
+    while(j < n2){
+        planetas[k] = Direita[j];
+        j++;
+        k++;
+    }
+}
+
+int ListaArranjo::GetTamanhoPreenchido(){
+    return tamanhoPreenchido;
 }
