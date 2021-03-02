@@ -112,3 +112,40 @@ void ListaArranjo::Ordena(int Esq, int Dir){
 void ListaArranjo::QuickSort(){
     Ordena(0, tamanhoPreenchido-1);
 }
+
+void ListaArranjo::MergeSort(int Esq, int Dir){
+    if(Esq < Dir){
+        int meio = (Esq + Dir)/2;
+        MergeSort(Esq, meio);
+        MergeSort(meio + 1, Dir);
+        Merge(Esq, meio, Dir);
+    }
+}
+
+void ListaArranjo::Merge(int Esq, int meio, int Dir){
+    int n1 = meio - Esq + 1;
+    int n2 = Dir - meio;
+
+    Planeta *Esquerda[200000];
+    Planeta *Direita[200000];
+
+    for(int i = 0; i < n1; i++){
+        Esquerda[i] = planetas[Esq + i];
+    }
+    
+    for(int j = 0; j < n2; j++){
+        Direita[j] = planetas[meio + 1 + j];
+    }
+
+    int i = 0, j = 0, k = Esq;
+
+    while (i < n1 && j < n2){
+        if(Esquerda[i] <= Direita[j]){
+            planetas[k] = Esquerda[i];
+        } else {
+            planetas[k] = Direita[j];
+            j++;
+        }
+        k++;
+    }
+}
