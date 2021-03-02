@@ -173,4 +173,35 @@ void ListaArranjo::MergeSort(int esq,int dir){
     }
 
 }
+
+void ListaArranjo::CockTailSort(){
+    bool trocou = true;
+    int inicio = 0;
+    int final = tamanhoPreenchido - 1;
  
+    while (trocou) {
+        trocou = false;
+ 
+        for (int i = inicio; i < final; ++i){
+            if (planetas[i]->GetDistanciaPlaneta() < planetas[i + 1]->GetDistanciaPlaneta()) {
+                Troca(i, i + 1);
+                trocou = true;
+            }
+        }
+ 
+        if (!trocou){
+            break;
+        }
+
+        trocou = false;
+        --final;
+
+        for (int i = final - 1; i >= inicio; --i){
+            if (planetas[i]->GetDistanciaPlaneta() < planetas[i + 1]->GetDistanciaPlaneta()) {
+                Troca(i, i + 1);
+                trocou = true;
+            }
+        }
+        ++inicio;
+    }
+}

@@ -23,6 +23,7 @@ class ListaArranjo {
         void Troca(int i, int menor);
         void MergeSort(int esq, int dir);
         void Merge(int e, int m, int d);
+        void CockTailSort();
 
     private:
         int tamanhoPreenchido;
