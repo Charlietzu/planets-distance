@@ -18,6 +18,9 @@ class ListaArranjo {
         void ProcessaLinha(string linha, int pos);
         void ImprimeLista();
         void InsertionSort();
+        void QuickSort();
+        void Particao(int Esq, int Dir, int *i, int *j);
+        void Ordena(int Esq, int Dir);
 
     private:
         int tamanhoPreenchido;

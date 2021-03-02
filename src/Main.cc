@@ -12,7 +12,9 @@ int main(int argc, char* argv[]) {
 
         ListaArranjo* listaPlanetas = new ListaArranjo();
         listaPlanetas->ProcessaEntrada(nomeEntrada, numeroLinhas);
-        listaPlanetas->InsertionSort();
+        
+        //listaPlanetas->InsertionSort();
+        listaPlanetas->QuickSort();
         listaPlanetas->ImprimeLista();
     }
 

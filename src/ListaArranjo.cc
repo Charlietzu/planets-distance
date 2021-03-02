@@ -81,3 +81,34 @@ void ListaArranjo::InsertionSort(){
         planetas[j + 1] = aux;
     }
 }
+
+void ListaArranjo::Particao(int Esq, int Dir, int *i, int *j){
+    Planeta *x, *w;
+
+    *i = Esq; 
+    *j = Dir;
+    x = planetas[(*i + *j)/2];
+
+    do {
+        while (x->GetDistanciaPlaneta() < planetas[*i]->GetDistanciaPlaneta() && planetas[*i] != NULL) (*i)++;
+        while (x->GetDistanciaPlaneta() > planetas[*j]->GetDistanciaPlaneta() && planetas[*j] != NULL) (*j)--;
+        if(*i <= *j){
+            w = planetas[*i];
+            planetas[*i] = planetas[*j];
+            planetas[*j] = w;
+            (*i)++;
+            (*j)--;
+        }
+    } while (*i <= *j);
+}
+
+void ListaArranjo::Ordena(int Esq, int Dir){
+    int i, j;
+    Particao(Esq, Dir, &i, &j);
+    if(Esq < j) Ordena(Esq, j);
+    if(i < Dir) Ordena(i, Dir);
+}
+
+void ListaArranjo::QuickSort(){
+    Ordena(0, tamanhoPreenchido-1);
+}
