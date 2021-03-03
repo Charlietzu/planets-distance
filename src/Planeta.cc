@@ -31,7 +31,7 @@ int Planeta::GetDistanciaPlaneta(){
 }
 
 void Planeta::ImprimePlaneta() {
-    cout << "Nome: " << GetNomePlaneta() << " - Distancia: " << GetDistanciaPlaneta() << endl;
+    cout << GetNomePlaneta() << " " << GetDistanciaPlaneta() << endl;
 }
 
 void Planeta::SetEsq(int valor){
