@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ListaArranjo.h"
+#include "PilhaArranjo.h"
 
 FILE *arquivo_distancias;
 
@@ -13,16 +14,17 @@ int main(int argc, char* argv[]) {
         ListaArranjo* listaPlanetas = new ListaArranjo();
         listaPlanetas->ProcessaEntrada(nomeEntrada, numeroLinhas);
 
+        PilhaArranjo* pilha = new PilhaArranjo();
 
-        //listaPlanetas->InsertionSort();
+        listaPlanetas->InsertionSort();
 
         //listaPlanetas->QuickSort();
-
-        //listaPlanetas->HeapSort();
        
         //listaPlanetas->MergeSort(0, listaPlanetas->GetTamanhoPreenchido() - 1);
 
-        listaPlanetas->CockTailSort();
+        //listaPlanetas->CockTailSort();
+
+        //listaPlanetas->QuickSortNaoRecursivo(pilha);
 
         listaPlanetas->ImprimeLista();
     }

@@ -205,3 +205,36 @@ void ListaArranjo::CockTailSort(){
         ++inicio;
     }
 }
+
+void ListaArranjo::QuickSortNaoRecursivo(PilhaArranjo *pilha){
+    Planeta *planeta = new Planeta();
+    int esq, dir, i, j;
+
+    esq = 0;
+    dir = tamanhoPreenchido - 1;
+    planeta->SetDir(dir);
+    planeta->SetEsq(esq);
+    pilha->Empilha(planeta);
+
+    do {
+        if(dir > esq){
+            Particao(esq, dir, &i, &j);
+
+            if((j-esq) < (dir-i)){
+                planeta->SetDir(j);
+                planeta->SetEsq(esq);
+                pilha->Empilha(planeta);
+                esq = i;
+            } else {
+                planeta->SetEsq(i);
+                planeta->SetDir(dir);
+                pilha->Empilha(planeta);
+                dir = j;
+            }
+        } else {
+            planeta = pilha->Desempilha();
+            dir = planeta->GetDir();
+            esq = planeta->GetEsq();
+        }
+    } while (pilha->GetTamanho() != 0);
+}

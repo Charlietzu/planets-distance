@@ -17,10 +17,16 @@ class Planeta {
         string GetNomePlaneta();
         int GetDistanciaPlaneta();
         void ImprimePlaneta();
-    
+        void SetEsq(int esq);
+        void SetDir(int dir);
+        int GetEsq();
+        int GetDir();
+        
     private:
         int distanciaPlaneta;
         string nomePlaneta;
+        int esq;
+        int dir;
     
 };
 

@@ -5,6 +5,8 @@ using namespace std;
 Planeta::Planeta() {
     nomePlaneta = "";
     distanciaPlaneta = -1;
+    esq = -1;
+    dir = -1;
 }
 
 Planeta::Planeta(string nome, int distancia){
@@ -30,4 +32,20 @@ int Planeta::GetDistanciaPlaneta(){
 
 void Planeta::ImprimePlaneta() {
     cout << "Nome: " << GetNomePlaneta() << " - Distancia: " << GetDistanciaPlaneta() << endl;
+}
+
+void Planeta::SetEsq(int valor){
+    esq = valor;
+}
+
+void Planeta::SetDir(int valor){
+    dir = valor;
+}
+
+int Planeta::GetDir(){
+    return dir;
+}
+
+int Planeta::GetEsq(){
+    return esq;
 }
