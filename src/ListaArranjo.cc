@@ -21,7 +21,7 @@ void ListaArranjo::InsereInicio(Planeta *planeta){
 }
 
 void ListaArranjo::ImprimeLista(){
-    for(int i = 0; i < tamanhoPreenchido; i++){
+    for(int i = 0; i < 7; i++){
         planetas[i]->ImprimePlaneta();
     }
 }
@@ -39,13 +39,17 @@ void ListaArranjo::ProcessaEntrada(string nomeEntrada, int numeroLinhas) {
 	ifstream arquivo;
 	arquivo.open(nomeEntrada, ios::in);
 	
-	while (getline(arquivo, linha) && i < 7) {
-		++i;
-		ProcessaLinha(linha, i);
+	while (getline(arquivo, linha)) {
+        if(i > numeroLinhas){
+            break;
+        } else {
+            ProcessaLinha(linha);
+            i++;
+        }
 	}
 }
 
-void ListaArranjo::ProcessaLinha(string linha, int pos) {
+void ListaArranjo::ProcessaLinha(string linha) {
 	string nomePlaneta = "", distanciaStr = "";
 	int numeroAux, tamanhoLinha = linha.length();
 	for(int i = 0; i < tamanhoLinha; i++){
@@ -206,35 +210,37 @@ void ListaArranjo::CockTailSort(){
     }
 }
 
-void ListaArranjo::QuickSortNaoRecursivo(PilhaArranjo *pilha){
-    Planeta *planeta = new Planeta();
+
+void ListaArranjo::QuickSortNaoRecursivo(){
+    PilhaEncadeada *pilha = new PilhaEncadeada();
+    TipoItem item;
     int esq, dir, i, j;
 
     esq = 0;
     dir = tamanhoPreenchido - 1;
-    planeta->SetDir(dir);
-    planeta->SetEsq(esq);
-    pilha->Empilha(planeta);
+    item.SetDir(dir);
+    item.SetEsq(esq);
+    pilha->Empilha(item);
 
     do {
         if(dir > esq){
             Particao(esq, dir, &i, &j);
-
-            if((j-esq) < (dir-i)){
-                planeta->SetDir(j);
-                planeta->SetEsq(esq);
-                pilha->Empilha(planeta);
+            if((j - esq) > (dir - i)){
+                item.SetDir(j);
+                item.SetEsq(esq);
+                pilha->Empilha(item);
                 esq = i;
             } else {
-                planeta->SetEsq(i);
-                planeta->SetDir(dir);
-                pilha->Empilha(planeta);
+                item.SetEsq(i);
+                item.SetDir(dir);
+                pilha->Empilha(item);
                 dir = j;
             }
         } else {
-            planeta = pilha->Desempilha();
-            dir = planeta->GetDir();
-            esq = planeta->GetEsq();
+            item = pilha->Desempilha();
+            dir = item.GetDir();
+            esq = item.GetEsq();
         }
-    } while (pilha->GetTamanho() != 0);
+    } while (!pilha->Vazia());
+
 }

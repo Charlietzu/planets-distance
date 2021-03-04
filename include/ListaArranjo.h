@@ -2,7 +2,7 @@
 #define LISTAARRANJO_H
 
 #include "Planeta.h"
-#include "PilhaArranjo.h"
+#include "PilhaEncadeada.h"
 #include <fstream>
 #include <iostream>
 
@@ -15,7 +15,7 @@ class ListaArranjo {
         void LimpaLista();
         int GetTamanhoPreenchido();
         void ProcessaEntrada(string nomeEntrada, int numeroLinhas);
-        void ProcessaLinha(string linha, int pos);
+        void ProcessaLinha(string linha);
         void ImprimeLista();
         void InsertionSort();
         void QuickSort();
@@ -24,7 +24,7 @@ class ListaArranjo {
         void Troca(int i, int menor);
         void MergeSort(int esq, int dir);
         void Merge(int e, int m, int d);
-        void QuickSortNaoRecursivo(PilhaArranjo *pilha);
+        void QuickSortNaoRecursivo();
         void CockTailSort();
 
     private:
