@@ -12,18 +12,33 @@ int main(int argc, char* argv[]) {
 
         ListaArranjo* listaPlanetas = new ListaArranjo();
         listaPlanetas->ProcessaEntrada(nomeEntrada, numeroLinhas);
+    
+        /*  
+            INÍCIO DOS ALGORITMOS DE ORDENAÇÃO
+
+            - LEMBRANDO QUE SOMENTE UM MÉTODO PODE ESTAR DESCOMENTADO POR VEZ.
+            - DESCOMENTAR APENAS O QUE DESEJA EXECUTAR.
+        */
 
         //listaPlanetas->InsertionSort();
 
-        //listaPlanetas->QuickSort();
+        listaPlanetas->QuickSort();
        
         //listaPlanetas->MergeSort(0, listaPlanetas->GetTamanhoPreenchido() - 1);
 
         //listaPlanetas->CockTailSort();
 
-        listaPlanetas->QuickSortNaoRecursivo();
+        //listaPlanetas->QuickSortNaoRecursivo();
+
+        /*
+            FIM DOS ALGORITMOS DE ORDENAÇÃO.
+        */
 
         listaPlanetas->ImprimeLista();
+
+        listaPlanetas->LimpaLista();
+
+        delete listaPlanetas;
     }
 
     return 0;

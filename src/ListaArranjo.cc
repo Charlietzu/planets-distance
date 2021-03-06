@@ -8,6 +8,9 @@ ListaArranjo::ListaArranjo(){
 	tamanhoPreenchido = 0;
 }
 
+ListaArranjo::~ListaArranjo(){
+}
+
 void ListaArranjo::InsereInicio(Planeta *planeta){
     if(tamanhoPreenchido == MAXTAM){
         throw "Erro: Lista Cheia!";
@@ -166,6 +169,9 @@ void ListaArranjo::Merge(int e, int m, int d){
         j++;
         k++;
     }
+
+    delete esquerda;
+    delete direita;
 }
 
 void ListaArranjo::MergeSort(int esq,int dir){
@@ -243,4 +249,6 @@ void ListaArranjo::QuickSortNaoRecursivo(){
         }
     } while (!pilha->Vazia());
 
+    pilha->Limpa();
+    delete pilha;
 }
